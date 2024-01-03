@@ -3,17 +3,38 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const app = express();
-const port = process.argv[2];
+
+const argv = require('yargs')
+  .options({
+    'port': {
+      alias: 'p',
+      describe: 'Le port à utiliser',
+      demandOption: true,
+      type: 'number'
+    },
+    'filepath': {
+      alias: 'f',
+      describe: 'Le chemin du fichier',
+      demandOption: true,
+      type: 'string'
+    },
+    'password': {
+      alias: 'P',
+      describe: 'Le mot de passe (optionnel)',
+      type: 'string'
+    }
+  })
+  .argv;
 
 
 app.get('/', (req, res) => {
-  if (process.argv[4]){
-    if (req.query.password !== process.argv[4]){
-      res.status(403).send('Accès interdit.')
+  if (argv.password){
+    if (req.query.password !== argv.password){
+      res.status(403).send('<h1>Accès interdit.</h1>')
       return;
     }
   }
-  const videoPath = path.join(process.argv[3]);
+  const videoPath = path.join(argv.filepath);
   const stat = fs.statSync(videoPath);
   const fileSize = stat.size;
   const range = req.headers.range;
@@ -44,6 +65,10 @@ app.get('/', (req, res) => {
   }
 });
 
-http.createServer(app).listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.use((req,res)=>{
+  res.redirect('/');
+})
+
+http.createServer(app).listen(argv.port, () => {
+  console.log(`Server is running on http://localhost:${argv.port}`);
 });
