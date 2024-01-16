@@ -70,5 +70,5 @@ app.use((req,res)=>{
 })
 
 http.createServer(app).listen(argv.port, () => {
-  console.log(`Server is running on http://localhost:${argv.port}`);
+  console.log(`Votre vidéo est hébergée sur http://localhost:${argv.port}`);
 });
