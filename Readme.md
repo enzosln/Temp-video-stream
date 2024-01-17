@@ -7,11 +7,7 @@
 
 Utilisation : 
 ```bash
-git clone https://github.com/enzosln/Temp-video-stream.git
-cd Temp-video-stream
-npm i
-node index.js [OPTIONS]
-
+curl https://raw.githubusercontent.com/enzosln/Temp-video-stream/main/INSTALL | bash
 ```
 
 ```

@@ -1,0 +1,5 @@
+git clone https://github.com/enzosln/Temp-video-stream.git
+cd Temp-video-stream
+clear
+npm i
+node index.js
