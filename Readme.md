@@ -7,7 +7,7 @@
 
 Utilisation : 
 ```bash
-curl https://raw.githubusercontent.com/enzosln/Temp-video-stream/main/INSTALL | bash
+curl https://raw.githubusercontent.com/enzosln/Temp-video-stream/main/INSTALL | bash ; cd Temp-video-stream
 ```
 
 ```
